@@ -13,6 +13,14 @@ window.addEventListener('load', async event => {
   sourceSelector.addEventListener('change', event => {
     updateData(event.target.value);
   });
+  if ('serviceWorker' in navigator) {
+    try {
+      navigator.serviceWorker.register('sw.js');
+      console.log('Sw registered');
+    } catch (error) {
+      console.log('Sw register failed');
+    }
+  }
 });
 
 async function updateData(source = defaultSource) {
