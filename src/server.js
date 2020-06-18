@@ -29,6 +29,8 @@ function startServer() {
   // public resources
   app.use(express.static(path.join(__dirname + '/public')));
   app.use(`${BASE_URL}`, require('./routes/routes'));
+  app.use(`${BASE_URL}/news`, require('./routes/news'));
+  app.use(`${BASE_URL}/sources`, require('./routes/sources'));
 
   // starting server
   return app.listen(app.get('port'), () => {
